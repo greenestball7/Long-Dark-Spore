@@ -58,6 +58,7 @@ cp "$ROOT/third_party/detours/LICENSE.md" "$OUT/licenses/Detours-MIT.txt"
 cp "$ROOT/third_party/modapi-launcher-kit/LICENSE" "$OUT/licenses/ModAPI-Launcher-Kit-MIT.txt"
 cp "$SDK/EASTL-3.02.01/LICENSE" "$OUT/licenses/EASTL-BSD.txt"
 cp "$ROOT/CREDITS.md" "$OUT/CREDITS.md"
+cp "$ROOT/LICENSE" "$OUT/LICENSE.txt"
 cp "$ROOT/packaging/README.txt" "$OUT/README.txt"
 ( cd "$ROOT/dist" && rm -f "FrostSpore-$VERSION.zip" && python3 - "$VERSION" <<'PY'
 import os, sys, zipfile

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "mode": "installed",
+  "games": [
+    {
+      "slug": "spore",
+      "role": "primary"
+    },
+    {
+      "slug": "custom-the-long-dark",
+      "role": "companion"
+    }
+  ],
+  "components": [
+    {
+      "id": "main",
+      "fileName": "FrostSpore-*.zip",
+      "label": "Spore: The Long Dark",
+      "kind": "main",
+      "required": true
+    }
+  ],
+  "requirements": [],
+  "mappings": [
+    {
+      "component": "main",
+      "from": "FrostSpore/",
+      "to": "{managed}/FrostSpore"
+    }
+  ],
+  "launch": {
+    "kind": "exe",
+    "path": "{managed}/FrostSpore/FrostSpore.exe",
+    "args": [
+      "--spore",
+      "{game}",
+      "--tld",
+      "{game:custom-the-long-dark}"
+    ]
+  }
+}
