@@ -47,3 +47,9 @@
   TakeDamage on the avatar; IsInWater / nest / herd signals; whether TLD ships SoundbanksInfo names
   or the length fallback is used; Wwise codec (Vorbis is supported; Opus is not yet).
 - Next: launch through Melty, read `%LOCALAPPDATA%\FrostSpore\logs\launcher.log` and `mod.log`, capture gameplay.
+
+## Melty
+- Draft listing: modId e97a9ff4-c2c4-40d0-b4e2-277d853bc73d, slug spore-the-long-dark (Studio: https://melty.gg/studio/e97a9ff4-c2c4-40d0-b4e2-277d853bc73d)
+- Recipe: packaging/recipe.json (validate_recipe valid, one_click_check yes). Not yet saved as melty.json (waiting for approval).
+- Upload of FrostSpore-0.1.0.zip started (uploadId 2f057ffa-12f2-4c34-b2c8-5afb626364e1), but the PUT to Melty's
+  storage host (ekvzctwehmwidsengayc.storage.supabase.co) was blocked by this session's network policy.
