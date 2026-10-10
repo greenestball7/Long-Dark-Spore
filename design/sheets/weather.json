@@ -1,0 +1,10 @@
+{
+  "sheet": "weather",
+  "doc": "Weather states and how long each lasts (in-game hours), cycled like The Long Dark's weather system. sound refers to tld_content.json; overlay_alpha is the whiteout strength (0-1).",
+  "columns": ["id", "label", "min_hours", "max_hours", "next", "overlay_alpha", "sound", "stages"],
+  "rows": [
+    {"id": "weather_clear",      "label": "Clear",      "min_hours": 3, "max_hours": 6, "next": ["weather_light_snow"],                  "overlay_alpha": 0.0,  "sound": "tld_wind_calm",     "stages": ["cell", "creature"]},
+    {"id": "weather_light_snow", "label": "Light snow", "min_hours": 2, "max_hours": 4, "next": ["weather_clear", "weather_blizzard"], "overlay_alpha": 0.12, "sound": "tld_wind_moderate", "stages": ["cell", "creature"]},
+    {"id": "weather_blizzard",   "label": "Blizzard",   "min_hours": 1, "max_hours": 3, "next": ["weather_light_snow"],                  "overlay_alpha": 0.55, "sound": "tld_wind_blizzard", "stages": ["cell", "creature"]}
+  ]
+}

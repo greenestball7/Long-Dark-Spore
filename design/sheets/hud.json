@@ -1,0 +1,16 @@
+{
+  "sheet": "hud",
+  "doc": "On-screen elements, laid out like The Long Dark's status radial as four bars plus a feels-like readout, bottom-left. Positions in pixels from the bottom-left corner; colors RGBA 0-255.",
+  "columns": ["id", "kind", "binds", "x", "y", "w", "h", "color", "stages"],
+  "rows": [
+    {"id": "hud_panel",    "kind": "panel",   "binds": "none",        "x": 16, "y": 16,  "w": 236, "h": 118, "color": [12, 18, 26, 150],   "stages": ["cell", "creature"]},
+    {"id": "bar_warmth",   "kind": "bar",     "binds": "warmth",      "x": 26, "y": 106, "w": 216, "h": 12,  "color": [228, 120, 40, 230], "stages": ["cell", "creature"]},
+    {"id": "bar_calories", "kind": "bar",     "binds": "calories",    "x": 26, "y": 88,  "w": 216, "h": 12,  "color": [200, 170, 70, 230], "stages": ["cell", "creature"]},
+    {"id": "bar_thirst",   "kind": "bar",     "binds": "thirst",      "x": 26, "y": 70,  "w": 216, "h": 12,  "color": [70, 150, 220, 230], "stages": ["creature"]},
+    {"id": "bar_fatigue",  "kind": "bar",     "binds": "fatigue",     "x": 26, "y": 52,  "w": 216, "h": 12,  "color": [150, 110, 200, 230],"stages": ["creature"]},
+    {"id": "txt_feels",    "kind": "text",    "binds": "feels_like",  "x": 26, "y": 24,  "w": 216, "h": 22,  "color": [235, 240, 245, 255],"stages": ["cell", "creature"]},
+    {"id": "frost_vignette","kind": "overlay","binds": "warmth_low",  "x": 0,  "y": 0,   "w": 0,   "h": 0,   "color": [205, 228, 245, 0],  "stages": ["cell", "creature"]},
+    {"id": "whiteout",     "kind": "overlay", "binds": "weather",     "x": 0,  "y": 0,   "w": 0,   "h": 0,   "color": [236, 242, 248, 0],  "stages": ["cell", "creature"]},
+    {"id": "ice_tint",     "kind": "overlay", "binds": "stage_cell",  "x": 0,  "y": 0,   "w": 0,   "h": 0,   "color": [170, 210, 235, 46], "stages": ["cell"]}
+  ]
+}

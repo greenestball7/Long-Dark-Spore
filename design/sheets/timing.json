@@ -1,0 +1,13 @@
+{
+  "sheet": "timing",
+  "doc": "Clock settings. One in-game hour of survival time passes every real_seconds_per_hour while the player is in a stage this mod covers and the game is not paused.",
+  "columns": ["id", "value", "unit"],
+  "rows": [
+    {"id": "real_seconds_per_hour", "value": 40,  "unit": "seconds"},
+    {"id": "hud_refresh_seconds",   "value": 0.25,"unit": "seconds"},
+    {"id": "damage_tick_seconds",   "value": 2,   "unit": "seconds"},
+    {"id": "howl_min_seconds",      "value": 70,  "unit": "seconds"},
+    {"id": "howl_max_seconds",      "value": 160, "unit": "seconds"},
+    {"id": "music_gap_seconds",     "value": 240, "unit": "seconds"}
+  ]
+}

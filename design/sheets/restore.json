@@ -1,0 +1,13 @@
+{
+  "sheet": "restore",
+  "doc": "Ways the player refills a need. trigger names a Spore-side signal from hooks.json; amount is percent added per trigger event, or per in-game hour for continuous triggers.",
+  "columns": ["id", "need", "trigger", "amount", "continuous", "stages"],
+  "rows": [
+    {"id": "cell_eat",          "need": "calories", "trigger": "cell_food_eaten",       "amount": 6,  "continuous": false, "stages": ["cell"]},
+    {"id": "cell_eat_warm",     "need": "warmth",   "trigger": "cell_food_eaten",       "amount": 4,  "continuous": false, "stages": ["cell"]},
+    {"id": "creature_eat",      "need": "calories", "trigger": "creature_hunger_rose",  "amount": 1,  "continuous": false, "stages": ["creature"]},
+    {"id": "creature_drink",    "need": "thirst",   "trigger": "creature_in_water",     "amount": 60, "continuous": true,  "stages": ["creature"]},
+    {"id": "creature_rest",     "need": "fatigue",  "trigger": "creature_still",        "amount": 12, "continuous": true,  "stages": ["creature"]},
+    {"id": "creature_rest_nest","need": "fatigue",  "trigger": "creature_near_nest",    "amount": 25, "continuous": true,  "stages": ["creature"]}
+  ]
+}

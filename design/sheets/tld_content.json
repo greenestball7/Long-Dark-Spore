@@ -1,0 +1,20 @@
+{
+  "sheet": "tld_content",
+  "doc": "Real content read from the player's own The Long Dark install at launch (never shipped). Audio is Wwise (.wem streamed files and .bnk-embedded media) under <TLD>/*_Data/StreamingAssets/Audio. Selection: names in SoundbanksInfo.xml/.json matching any keyword (first match wins, excluded words skipped); when the game ships no names, the fallback rule picks from the unnamed media by length. The launcher converts each pick to WAV in the cache; the mod plays it. role decides how it plays.",
+  "columns": ["id", "role", "keywords", "exclude", "fallback", "loop", "volume", "stages"],
+  "rows": [
+    {"id": "tld_wind_calm",     "role": "ambience", "keywords": ["wind_calm", "wind_low", "windlight", "wind_light", "amb_wind", "wind"], "exclude": ["blizzard", "strong", "heavy", "ui"], "fallback": "medium_long", "loop": true,  "volume": 0.55, "stages": ["cell", "creature"]},
+    {"id": "tld_wind_moderate", "role": "ambience", "keywords": ["wind_med", "wind_moderate", "windmed", "wind_mid", "snow"],                "exclude": ["blizzard", "ui", "step", "foot"],        "fallback": "medium_long", "loop": true,  "volume": 0.7,  "stages": ["cell", "creature"]},
+    {"id": "tld_wind_blizzard", "role": "ambience", "keywords": ["blizzard", "wind_strong", "wind_heavy", "windstrong", "storm"],          "exclude": ["ui"],                                    "fallback": "long",        "loop": true,  "volume": 0.9,  "stages": ["cell", "creature"]},
+    {"id": "tld_wolf_howl",     "role": "oneshot",  "keywords": ["wolf_howl", "howl", "wolfhowl"],                                           "exclude": ["ui"],                                    "fallback": "short",       "loop": false, "volume": 0.8,  "stages": ["creature"]},
+    {"id": "tld_ice_crack",     "role": "oneshot",  "keywords": ["ice_crack", "icecrack", "ice_break", "crack"],                             "exclude": ["ui", "fire"],                            "fallback": "short",       "loop": false, "volume": 0.7,  "stages": ["cell"]},
+    {"id": "tld_freezing",      "role": "oneshot",  "keywords": ["freezing", "shiver", "teeth", "cold_breath", "breath_cold"],               "exclude": ["ui"],                                    "fallback": "short",       "loop": false, "volume": 0.8,  "stages": ["cell", "creature"]},
+    {"id": "tld_music",         "role": "music",    "keywords": ["music", "mus_", "score", "theme"],                                         "exclude": ["menu_click", "ui_", "stinger"],          "fallback": "longest",     "loop": false, "volume": 0.6,  "stages": ["cell", "creature"]}
+  ],
+  "fallbacks": {
+    "short": "media 1-8 s long, picked deterministically by id hash",
+    "medium_long": "media 8-60 s long",
+    "long": "media 20-120 s long",
+    "longest": "the five longest media files"
+  }
+}

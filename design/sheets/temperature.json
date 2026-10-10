@@ -1,0 +1,21 @@
+{
+  "sheet": "temperature",
+  "doc": "Feels-like temperature model (degrees C), the Long Dark way: air temperature + wind chill + shelter/heat bonuses. Warmth drains when feels-like is below zero and recovers above it.",
+  "columns": ["id", "kind", "celsius", "applies_when", "stages"],
+  "rows": [
+    {"id": "air_cell_ocean",     "kind": "air",     "celsius": -4,  "applies_when": "always",               "stages": ["cell"]},
+    {"id": "air_land_day",       "kind": "air",     "celsius": -10, "applies_when": "always",               "stages": ["creature"]},
+    {"id": "wind_light_snow",    "kind": "wind",    "celsius": -4,  "applies_when": "weather_light_snow",   "stages": ["cell", "creature"]},
+    {"id": "wind_blizzard",      "kind": "wind",    "celsius": -18, "applies_when": "weather_blizzard",     "stages": ["cell", "creature"]},
+    {"id": "exertion",           "kind": "bonus",   "celsius": 6,   "applies_when": "player_moving_fast",   "stages": ["cell", "creature"]},
+    {"id": "huddle_herd",        "kind": "bonus",   "celsius": 8,   "applies_when": "creature_near_herd",   "stages": ["creature"]},
+    {"id": "nest_shelter",       "kind": "bonus",   "celsius": 22,  "applies_when": "creature_near_nest",   "stages": ["creature"]},
+    {"id": "fed_metabolism",     "kind": "bonus",   "celsius": 3,   "applies_when": "calories_above_50",    "stages": ["cell", "creature"]}
+  ],
+  "rates": {
+    "warmth_drain_per_hour_per_degree_below_zero": 2.5,
+    "warmth_gain_per_hour_per_degree_above_zero": 4.0,
+    "hypothermia_after_hours_at_zero_warmth": 3,
+    "hypothermia_condition_multiplier": 2
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "sheet": "thresholds",
+  "doc": "Distances and speeds the Spore hooks compare against (hooks.json). Spore creature-stage units are metres; cell-stage units are Spore's cell world units.",
+  "columns": ["id", "value", "unit", "used_by"],
+  "rows": [
+    {"id": "cell_fast_speed",       "value": 9,   "unit": "cell units/s", "used_by": "cell_player"},
+    {"id": "creature_fast_speed",   "value": 6,   "unit": "m/s",          "used_by": "creature_speed"},
+    {"id": "creature_still_speed",  "value": 0.5, "unit": "m/s",          "used_by": "creature_avatar"},
+    {"id": "nest_radius",           "value": 12,  "unit": "m",            "used_by": "creature_nest"},
+    {"id": "herd_radius",           "value": 6,   "unit": "m",            "used_by": "creature_herd"},
+    {"id": "cell_max_health",       "value": 6,   "unit": "hp",           "used_by": "cell_health"},
+    {"id": "frozen_temperature_score","value": 0, "unit": "score 0-1",    "used_by": "frozen_planet"}
+  ]
+}

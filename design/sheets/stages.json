@@ -1,0 +1,9 @@
+{
+  "sheet": "stages",
+  "doc": "Which Spore stages the mashup covers. Out-of-scope stages run as plain Spore (no HUD, no survival).",
+  "columns": ["id", "spore_check", "active", "needs", "max_health_source"],
+  "rows": [
+    {"id": "cell",     "spore_check": "stage_cell",     "active": true,  "needs": ["warmth", "calories"],                      "max_health_source": "cell_health"},
+    {"id": "creature", "spore_check": "stage_creature", "active": true,  "needs": ["warmth", "calories", "thirst", "fatigue"], "max_health_source": "creature_health"}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sheet": "needs",
+  "doc": "The Long Dark's four survival needs, carried into Spore. Values are percent of the meter (0-100). Rates are per in-game hour; timing.json maps game hours to real seconds. condition_loss_per_hour_when_empty is the Long Dark rule for that need at 0%.",
+  "columns": ["id", "label", "start", "drain_per_hour_idle", "drain_per_hour_active", "condition_loss_per_hour_when_empty", "stages", "source"],
+  "rows": [
+    {"id": "warmth",  "label": "Warmth",   "start": 100, "drain_per_hour_idle": 0,  "drain_per_hour_active": 0,  "condition_loss_per_hour_when_empty": 20, "stages": ["cell", "creature"], "source": "TLD wiki Needs: freezing costs 20% condition/hour (warmth drain itself comes from temperature.json)"},
+    {"id": "calories","label": "Calories", "start": 75,  "drain_per_hour_idle": 4,  "drain_per_hour_active": 8,  "condition_loss_per_hour_when_empty": 1,  "stages": ["cell", "creature"], "source": "TLD wiki Needs: starving costs 1% condition/hour; TLD burns ~100 cal/h at rest and ~200 cal/h moving of a 2500 store (4%/8%)"},
+    {"id": "thirst",  "label": "Thirst",   "start": 100, "drain_per_hour_idle": 4,  "drain_per_hour_active": 5,  "condition_loss_per_hour_when_empty": 2,  "stages": ["creature"],         "source": "TLD wiki Needs: dehydration costs 2% condition/hour; meter empties in about a day"},
+    {"id": "fatigue", "label": "Fatigue",  "start": 100, "drain_per_hour_idle": 3,  "drain_per_hour_active": 6,  "condition_loss_per_hour_when_empty": 1,  "stages": ["creature"],         "source": "TLD wiki Needs: exhaustion costs 1% condition/hour"}
+  ]
+}

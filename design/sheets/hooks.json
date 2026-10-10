@@ -1,0 +1,210 @@
+{
+  "sheet": "hooks",
+  "doc": "Every point where the mod touches Spore (ModAPI SDK names). kind: read = read game state, write = change game state, ui = on-screen element, tick = per-frame hook. A signal is the name other sheets use in trigger/applies_when.",
+  "columns": [
+    "id",
+    "kind",
+    "spore_api",
+    "signal",
+    "stages",
+    "notes"
+  ],
+  "rows": [
+    {
+      "id": "frame_tick",
+      "kind": "tick",
+      "spore_api": "MessageManager.AddListener(listener, App::kMsgAppUpdate)",
+      "signal": "always",
+      "stages": [
+        "cell",
+        "creature"
+      ],
+      "notes": "one update per frame; survival clock advances by Clock real time"
+    },
+    {
+      "id": "stage_cell",
+      "kind": "read",
+      "spore_api": "Simulator::IsCellGame()",
+      "signal": "stage_cell",
+      "stages": [
+        "cell"
+      ],
+      "notes": "systems only run in cell or creature stage"
+    },
+    {
+      "id": "stage_creature",
+      "kind": "read",
+      "spore_api": "Simulator::IsCreatureGame()",
+      "signal": "stage_creature",
+      "stages": [
+        "creature"
+      ],
+      "notes": "systems only run in cell or creature stage"
+    },
+    {
+      "id": "cell_player",
+      "kind": "read",
+      "spore_api": "Simulator::Cell::GetPlayerCell()",
+      "signal": "player_moving_fast",
+      "stages": [
+        "cell"
+      ],
+      "notes": "speed from mTransform offset change per second"
+    },
+    {
+      "id": "cell_food",
+      "kind": "read",
+      "spore_api": "Simulator::Cell::cCellGame::mpSerializableData->mFoodProgression + mPlantFoodProgression",
+      "signal": "cell_food_eaten",
+      "stages": [
+        "cell"
+      ],
+      "notes": "each increase is one food eaten"
+    },
+    {
+      "id": "cell_health",
+      "kind": "write",
+      "spore_api": "Simulator::Cell::cCellObjectData::mHealthPoints",
+      "signal": "condition",
+      "stages": [
+        "cell"
+      ],
+      "notes": "int, max 6; condition 100% = 6 HP"
+    },
+    {
+      "id": "creature_avatar",
+      "kind": "read",
+      "spore_api": "GameNounManager.GetAvatar()",
+      "signal": "creature_still",
+      "stages": [
+        "creature"
+      ],
+      "notes": "still = horizontal speed under 0.5 m/s"
+    },
+    {
+      "id": "creature_speed",
+      "kind": "read",
+      "spore_api": "cCreatureAnimal::GetVelocity()",
+      "signal": "player_moving_fast",
+      "stages": [
+        "creature"
+      ],
+      "notes": "fast = over 6 m/s"
+    },
+    {
+      "id": "creature_hunger",
+      "kind": "read",
+      "spore_api": "cCreatureBase::mHunger",
+      "signal": "creature_hunger_rose",
+      "stages": [
+        "creature"
+      ],
+      "notes": "Spore's own hunger (0-100) rising means the creature ate; the rise feeds Calories"
+    },
+    {
+      "id": "creature_water",
+      "kind": "read",
+      "spore_api": "cCreatureAnimal::GetPosition() vs Terrain water height (sea level radius)",
+      "signal": "creature_in_water",
+      "stages": [
+        "creature"
+      ],
+      "notes": "at or below planet water level"
+    },
+    {
+      "id": "creature_nest",
+      "kind": "read",
+      "spore_api": "cCreatureBase::mpHerd->mpNest->GetPosition()",
+      "signal": "creature_near_nest",
+      "stages": [
+        "creature"
+      ],
+      "notes": "within 12 m of own nest"
+    },
+    {
+      "id": "creature_herd",
+      "kind": "read",
+      "spore_api": "cCreatureBase::mpHerd member positions",
+      "signal": "creature_near_herd",
+      "stages": [
+        "creature"
+      ],
+      "notes": "a herd member within 6 m"
+    },
+    {
+      "id": "creature_health",
+      "kind": "write",
+      "spore_api": "cCombatant::mHealthPoints / mMaxHealthPoints",
+      "signal": "condition",
+      "stages": [
+        "creature"
+      ],
+      "notes": "condition % of max health"
+    },
+    {
+      "id": "frozen_planet",
+      "kind": "write",
+      "spore_api": "Simulator::GetActivePlanetRecord()->mTemperatureScore",
+      "signal": "always",
+      "stages": [
+        "creature"
+      ],
+      "notes": "set to 0 (coldest) so Spore draws its own snow and ice on the home planet"
+    },
+    {
+      "id": "hud_root",
+      "kind": "ui",
+      "spore_api": "UTFWin::Window added to WindowManager.GetMainWindow()",
+      "signal": "always",
+      "stages": [
+        "cell",
+        "creature"
+      ],
+      "notes": "parent of hud.json elements"
+    },
+    {
+      "id": "weather_signal",
+      "kind": "read",
+      "spore_api": "internal weather state (weather.json)",
+      "signal": "weather_blizzard",
+      "stages": [
+        "cell",
+        "creature"
+      ],
+      "notes": "also weather_light_snow"
+    },
+    {
+      "id": "weather_signal_light",
+      "kind": "read",
+      "spore_api": "internal weather state (weather.json)",
+      "signal": "weather_light_snow",
+      "stages": [
+        "cell",
+        "creature"
+      ],
+      "notes": "light snow state from weather.json"
+    },
+    {
+      "id": "calories_signal",
+      "kind": "read",
+      "spore_api": "internal needs state (needs.json)",
+      "signal": "calories_above_50",
+      "stages": [
+        "cell",
+        "creature"
+      ],
+      "notes": "true while calories meter is above 50%"
+    },
+    {
+      "id": "tld_audio_out",
+      "kind": "write",
+      "spore_api": "winmm waveOut mixer (own thread)",
+      "signal": "always",
+      "stages": [
+        "cell",
+        "creature"
+      ],
+      "notes": "plays tld_content.json cache files; Spore's own audio untouched"
+    }
+  ]
+}
